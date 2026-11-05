@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "benchmark": "image-preflight",
+  "id": "ygg-pg-0.3.5-2026-11-01",
+  "status": "cited",
+  "date": "2026-11-01",
+  "submitted_by": "Manuel Reyes Bravo",
+  "notes": "Run on the published image, pulled by digest with no registry credential (anonymous). Passing preflight is a prerequisite for Red Hat container certification, not the certification itself.",
+  "run": {
+    "config": "check container, published image by digest, anonymous pull",
+    "harness_repo": "https://github.com/redhat-openshift-ecosystem/openshift-preflight",
+    "harness_commit": "1195775769d05581060691fdcbd584b8a36e8ddd",
+    "workflow_commit": null,
+    "run_url": null,
+    "command": "preflight check container ghcr.io/latamflows/ygg-pg@sha256:9962ad3fac92af86ff813822aa33c8c9d3f37d49a1eaf4eaa34d43cb91e5f5c3",
+    "repeat": 1,
+    "seed": {
+      "value": null,
+      "note": "No randomness: the checks read the image's manifest, layers and metadata."
+    },
+    "versions": {
+      "preflight": "1.22.0",
+      "image": "ghcr.io/latamflows/ygg-pg:0.3.5",
+      "image_digest": "sha256:9962ad3fac92af86ff813822aa33c8c9d3f37d49a1eaf4eaa34d43cb91e5f5c3",
+      "image_config": "sha256:c60b7c3d203f2bea328130c10fc03a9865ca40a8f4a5cda64e6ff5497806acba",
+      "postgresql": "19rc1",
+      "pg_agent_gate": "0.4.1",
+      "pg_phasevec": "0.17.0"
+    },
+    "hardware": {
+      "kind": "workstation",
+      "label": "the maintainer's workstation (the result does not depend on it)",
+      "cpu": null,
+      "nproc": null,
+      "mem_gib": null,
+      "gpu": null
+    }
+  },
+  "raw": [
+    {
+      "path": "preflight-stdout.json",
+      "sha256": "8c3502d592242149601f95fdd6cccf36c90528298e3aacec0e89399b905c5c14",
+      "description": "the JSON preflight prints on stdout"
+    }
+  ],
+  "figures": {
+    "checks.passed": 11,
+    "checks.failed": 0,
+    "checks.errors": 0,
+    "checks.total": 11,
+    "passed": true,
+    "preflight.version": "1.22.0",
+    "image": "ghcr.io/latamflows/ygg-pg:0.3.5"
+  }
+}

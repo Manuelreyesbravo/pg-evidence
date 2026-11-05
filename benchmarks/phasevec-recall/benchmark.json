@@ -1,0 +1,10 @@
+{
+  "title": "pg_phasevec vs pgvector: recall and latency on the same data",
+  "measures": "recall@10 against the dataset's published ground truth, and per-query latency (p50, p99) and throughput, for pg_phasevec (find, find_ivf) and pgvector (HNSW, IVFFlat) on the same vectors, the same queries, the same PostgreSQL build and the same machine, swept over each index's search knob. See SPEC.md.",
+  "harness": "benchmarks/phasevec-recall/run_recall.py",
+  "rerun": "make recall-phasevec DSN=postgresql://... DATASET=nytimes-256-angular",
+  "caveats": [
+    "Designed, not run yet: no figure from this benchmark is published."
+  ],
+  "status": "designed"
+}

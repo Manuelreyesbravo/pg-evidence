@@ -1,0 +1,40 @@
+# A number claims, the machine decides: every push and every pull request recomputes every
+# figure from its raw data, checks every sha256 and every published claim, and checks that
+# the committed site/ is what the data renders. A PR that adds a run must add it as
+# "submitted"; only a maintainer promotes a run to "cited".
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Runs added by this pull request must enter as "submitted"
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          added=$(git diff --name-only --diff-filter=A "$BASE" HEAD -- 'results/*/*/result.json')
+          echo "added: ${added:-none}"
+          # shellcheck disable=SC2086
+          python3 tools/validate.py --submitted $added
+
+      - name: Validate every result and every claim
+        run: python3 tools/validate.py
+
+      - name: The committed site is what the data renders
+        run: |
+          python3 tools/build_site.py
+          git diff --exit-code -- site || { echo "site/ is stale: run make site and commit it"; exit 1; }

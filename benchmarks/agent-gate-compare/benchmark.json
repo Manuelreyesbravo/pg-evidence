@@ -1,0 +1,13 @@
+{
+  "title": "The same gate, with and without MCP",
+  "measures": "One model (base Qwen3-8B, temperature 0), 13 tasks (6 everyday, 7 traps) and a superuser oracle that compares every table before and after each task. Only the connection changes: native (one SQL statement through pg_agent_gate), native-loop (the same, agentic), gated-mcp (the same gate over MCP) and stock-mcp (a popular Postgres MCP server with the same privileges and no gate). Reported per arm: good tasks done, trap breaches, prompt tokens, model calls, median seconds per task, errors.",
+  "harness": "https://github.com/Manuelreyesbravo/agent-gate-demo/tree/main/compare",
+  "rerun": "gh workflow run compare.yml -R <your-fork>/agent-gate-demo -f config=cited",
+  "caveats": [
+    "13 tasks is a demonstration, not a statistical benchmark; repeat=3 shows run-to-run variation.",
+    "The model server runs with a 4096-token context window. The MCP arms carry tool definitions and tool results inside it; in the cited run one gated-mcp error was a context overflow. A larger window would likely change the MCP arms' numbers.",
+    "Times come only from clean GitHub runners; times from a shared machine are never cited.",
+    "The cited run measured pg_agent_gate 0.4.0 on PostgreSQL 18; the public image ships 0.4.1 on PostgreSQL 19rc1. config=current measures 0.4.1."
+  ],
+  "status": "running"
+}

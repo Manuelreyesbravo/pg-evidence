@@ -1,0 +1,51 @@
+{
+  "about": "Every number published about the pg_agent_gate / pg_phasevec family, each tied to the run that produced it. tools/validate.py recomputes each check from the run's raw files; a claim whose checks fail cannot be merged. 'source' is the exact sentence as published (see control/numeros-verificados.md, 'Frases listas'); 'text' is how this site states it.",
+  "claims": [
+    {
+      "id": "trap-breakouts",
+      "run": "agent-gate-compare/ci-41184106078",
+      "text": "Same model, same tasks, a superuser checking what really changed: through a popular Postgres MCP server, 4 of 7 trap tasks broke out. With the database deciding, 0 of 7.",
+      "source": "Same model, same tasks, a superuser checking what really changed: through a popular Postgres MCP server, 4 of 7 trap tasks broke out. With the database deciding, 0 of 7.",
+      "checks": [
+        {"figure": "stock_mcp.breach", "equals": "4/7"},
+        {"figure": "gated.max_breach", "equals": "0/7"}
+      ]
+    },
+    {
+      "id": "mcp-tokens-and-time",
+      "run": "agent-gate-compare/ci-41184106078",
+      "text": "With the same gate behind both, the agent without MCP used 5x fewer prompt tokens than through MCP (24k vs 126k for 13 tasks) and finished each task 13x faster: a median of 14 s against 185 s, on a CPU-only CI runner anyone can re-run.",
+      "source": "With the same gate behind both, the agent without MCP used 5x fewer prompt tokens than through MCP (24k vs 126k for 13 tasks) and finished each task 13x faster: a median of 14 s against 185 s, on a CPU-only CI runner anyone can re-run.",
+      "checks": [
+        {"figure": "ratio.prompt_tokens.gated_mcp_over_native_loop", "transform": "round", "equals": 5},
+        {"figure": "native_loop.prompt_tokens_total", "transform": "round_thousands", "equals": 24},
+        {"figure": "gated_mcp.prompt_tokens_total", "transform": "round_thousands", "equals": 126},
+        {"figure": "tasks.per_arm", "equals": 13},
+        {"figure": "ratio.median_seconds.gated_mcp_over_native_loop", "transform": "round", "equals": 13},
+        {"figure": "native_loop.median_seconds", "transform": "round", "equals": 14},
+        {"figure": "gated_mcp.median_seconds", "transform": "round", "equals": 185}
+      ]
+    },
+    {
+      "id": "one-statement-median",
+      "run": "agent-gate-compare/ci-41184106078",
+      "text": "Writing one statement and letting the database decide took a median of 6 s per task.",
+      "source": "Writing one statement and letting the database decide took a median of 6 s per task.",
+      "checks": [
+        {"figure": "native.median_seconds", "transform": "round", "equals": 6}
+      ]
+    },
+    {
+      "id": "image-preflight",
+      "run": "image-preflight/ygg-pg-0.3.5-2026-11-01",
+      "text": "The ygg-pg 0.3.5 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.",
+      "source": "Built on Red Hat UBI; passes all 11 Red Hat container certification checks (preflight) — reproduce it with one command. LatamFlows is a Red Hat partner; container certification is the next step.",
+      "checks": [
+        {"figure": "checks.passed", "equals": 11},
+        {"figure": "checks.failed", "equals": 0},
+        {"figure": "checks.errors", "equals": 0},
+        {"figure": "passed", "equals": true}
+      ]
+    }
+  ]
+}

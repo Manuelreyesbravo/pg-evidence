@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agent-gate-compare / ci-41184106078 — pg-evidence</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><a class="name" href="../index.html">pg-evidence</a>
+<span class="tag">numbers about PostgreSQL extensions, each one rerunnable</span></header>
+<main>
+<h1>agent-gate-compare / ci-41184106078</h1>
+<p class="notes">The raw file is this run&#x27;s compare-results.json artifact. The run predates run-metadata.json, so the PostgreSQL minor, the CPU model and the core count were not recorded: they are null here, not guessed. Rerun with config=cited to get them.</p>
+<h2>The run</h2><table class="kv">
+<tr><th>benchmark</th><td>agent-gate-compare</td></tr>
+<tr><th>status</th><td>cited</td></tr>
+<tr><th>date</th><td>2026-10-31</td></tr>
+<tr><th>submitted by</th><td>Manuel Reyes Bravo</td></tr>
+<tr><th>configuration</th><td>cited</td></tr>
+<tr><th>harness</th><td><a href="https://github.com/Manuelreyesbravo/agent-gate-demo">https://github.com/Manuelreyesbravo/agent-gate-demo</a> at <code>4cef786cf968b8df48d8fb898d2291a61b485320</code></td></tr>
+<tr><th>CI run</th><td><a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078">https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078</a></td></tr>
+<tr><th>rerun</th><td><code>gh workflow run compare.yml -R &lt;your-fork&gt;/agent-gate-demo -f config=cited</code></td></tr>
+<tr><th>repetitions</th><td>1</td></tr>
+<tr><th>seed</th><td><span class="na">not recorded</span> — No sampling seed: temperature 0 (greedy decoding). On CPU, llama.cpp can still differ in the last bits between machines; --repeat shows how much a run varies.</td></tr>
+</table>
+<h2>Versions</h2><table class="kv">
+<tr><th>postgresql_major</th><td>18</td></tr>
+<tr><th>postgresql_server_version</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>postgresql_source</th><td>apt.postgresql.org (PGDG), ubuntu-24.04</td></tr>
+<tr><th>pg_agent_gate</th><td>0.4.0</td></tr>
+<tr><th>pg_agent_gate_commit</th><td>33d0acbfcab845ad113d122d58bf5d74e5084d2a</td></tr>
+<tr><th>llama_cpp_commit</th><td>bd4eeaa047006cb1fe71999fbd11134b5836e167</td></tr>
+<tr><th>stock_mcp_image</th><td>docker.io/crystaldba/postgres-mcp@sha256:dbbd346860d29f1543e991f30f3284bf4ab5f096d049ecc3426528f20b1b6e6b</td></tr>
+<tr><th>rust</th><td>1.98.0</td></tr>
+<tr><th>cargo_pgrx</th><td>0.19.2</td></tr>
+<tr><th>psycopg</th><td>3.3.6</td></tr>
+</table>
+<h2>Model</h2><table class="kv">
+<tr><th>name</th><td>Qwen3-8B Q4_K_M (base, not fine-tuned)</td></tr>
+<tr><th>url</th><td>https://huggingface.co/unsloth/Qwen3-8B-GGUF/resolve/a6adef130ffb23ddaf1a62fec9dced968c9bc482/Qwen3-8B-Q4_K_M.gguf</td></tr>
+<tr><th>sha256</th><td>120307ba529eb2439d6c430d94104dabd578497bc7bfe7e322b5d9933b449bd4</td></tr>
+<tr><th>context_tokens</th><td>4096</td></tr>
+<tr><th>temperature</th><td>0</td></tr>
+</table>
+<h2>Hardware</h2><table class="kv">
+<tr><th>kind</th><td>github-hosted</td></tr>
+<tr><th>label</th><td>ubuntu-24.04, GitHub&#x27;s standard Linux runner, CPU only</td></tr>
+<tr><th>cpu</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>nproc</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>mem_gib</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>gpu</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>shared</th><td>no</td></tr>
+</table>
+<h2>Raw data</h2>
+<div class="scroll"><table class="raw"><tr><th>file</th><th>sha256</th><th>check</th></tr><tr><td><a href="../raw/agent-gate-compare/ci-41184106078/compare-results.json">compare-results.json</a></td><td><code class="sha">8207e5a376dbab2bcc8b00c7a905f13d7927db657e96b2ab30e2fac52730826f</code></td><td>ok</td></tr></table></div>
+<h2>Figures (recomputed from the raw data)</h2><table class="kv">
+<tr><th>gated.max_breach</th><td>0/7</td></tr>
+<tr><th>gated_mcp.bounded</th><td>0/7</td></tr>
+<tr><th>gated_mcp.breach</th><td>0/7</td></tr>
+<tr><th>gated_mcp.errors</th><td>4</td></tr>
+<tr><th>gated_mcp.good</th><td>5/6</td></tr>
+<tr><th>gated_mcp.median_seconds</th><td>185.439</td></tr>
+<tr><th>gated_mcp.model_calls_total</th><td>67</td></tr>
+<tr><th>gated_mcp.prompt_tokens_total</th><td>126415</td></tr>
+<tr><th>native.bounded</th><td>0/7</td></tr>
+<tr><th>native.breach</th><td>0/7</td></tr>
+<tr><th>native.errors</th><td>0</td></tr>
+<tr><th>native.good</th><td>6/6</td></tr>
+<tr><th>native.median_seconds</th><td>5.82</td></tr>
+<tr><th>native.model_calls_total</th><td>13</td></tr>
+<tr><th>native.prompt_tokens_total</th><td>3366</td></tr>
+<tr><th>native_loop.bounded</th><td>0/7</td></tr>
+<tr><th>native_loop.breach</th><td>0/7</td></tr>
+<tr><th>native_loop.errors</th><td>3</td></tr>
+<tr><th>native_loop.good</th><td>6/6</td></tr>
+<tr><th>native_loop.median_seconds</th><td>14.34</td></tr>
+<tr><th>native_loop.model_calls_total</th><td>50</td></tr>
+<tr><th>native_loop.prompt_tokens_total</th><td>24099</td></tr>
+<tr><th>ratio.median_seconds.gated_mcp_over_native_loop</th><td>12.932</td></tr>
+<tr><th>ratio.prompt_tokens.gated_mcp_over_native_loop</th><td>5.246</td></tr>
+<tr><th>results.rows</th><td>52</td></tr>
+<tr><th>stock_mcp.bounded</th><td>0/7</td></tr>
+<tr><th>stock_mcp.breach</th><td>4/7</td></tr>
+<tr><th>stock_mcp.errors</th><td>0</td></tr>
+<tr><th>stock_mcp.good</th><td>6/6</td></tr>
+<tr><th>stock_mcp.median_seconds</th><td>18.798</td></tr>
+<tr><th>stock_mcp.model_calls_total</th><td>30</td></tr>
+<tr><th>stock_mcp.prompt_tokens_total</th><td>54479</td></tr>
+<tr><th>tasks.per_arm</th><td>13</td></tr>
+</table>
+</main>
+<footer>Every figure here is recomputed from the raw file it links to (sha256 shown) by
+<code>tools/validate.py</code>. Source, schema and the process to submit your own run:
+<a href="https://github.com/Manuelreyesbravo/pg-evidence">https://github.com/Manuelreyesbravo/pg-evidence</a>.</footer>
+</body>
+</html>

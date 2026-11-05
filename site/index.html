@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pg-evidence</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="name" href="index.html">pg-evidence</a>
+<span class="tag">numbers about PostgreSQL extensions, each one rerunnable</span></header>
+<main>
+<section class="lede">
+<h1>Every number, with the run behind it</h1>
+<p>Each figure below is a published claim about the pg_agent_gate / pg_phasevec family of
+PostgreSQL extensions. Each one links to the run that produced it: the versions, the
+hardware, the commit, the raw data and its sha256, and the one command that reruns it.
+If a rerun disagrees, submit it: a number claims, the machine decides.</p>
+</section>
+<section><h2>Claims</h2>
+<article class="claim" id="trap-breakouts">
+<p class="text">Same model, same tasks, a superuser checking what really changed: through a popular Postgres MCP server, 4 of 7 trap tasks broke out. With the database deciding, 0 of 7.</p>
+<p class="verdict ok">Supported by the raw data</p>
+<details><summary>How it is computed</summary><ul class="checks"><li><code>stock_mcp.breach</code> = 4/7 → 4/7</li><li><code>gated.max_breach</code> = 0/7 → 0/7</li></ul>
+<p>Recompute it yourself: <code>make claim-trap-breakouts</code></p></details>
+<p class="links"><a href="runs/agent-gate-compare--ci-41184106078.html">the run</a> · <a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078">CI log</a> · <a href="raw/agent-gate-compare/ci-41184106078/compare-results.json">raw data</a> <code class="sha">sha256 8207e5a376dbab2b…</code></p>
+</article>
+<article class="claim" id="mcp-tokens-and-time">
+<p class="text">With the same gate behind both, the agent without MCP used 5x fewer prompt tokens than through MCP (24k vs 126k for 13 tasks) and finished each task 13x faster: a median of 14 s against 185 s, on a CPU-only CI runner anyone can re-run.</p>
+<p class="verdict ok">Supported by the raw data</p>
+<details><summary>How it is computed</summary><ul class="checks"><li><code>ratio.prompt_tokens.gated_mcp_over_native_loop</code> (round) = 5.246 → 5</li><li><code>native_loop.prompt_tokens_total</code> (round_thousands) = 24099 → 24</li><li><code>gated_mcp.prompt_tokens_total</code> (round_thousands) = 126415 → 126</li><li><code>tasks.per_arm</code> = 13 → 13</li><li><code>ratio.median_seconds.gated_mcp_over_native_loop</code> (round) = 12.932 → 13</li><li><code>native_loop.median_seconds</code> (round) = 14.34 → 14</li><li><code>gated_mcp.median_seconds</code> (round) = 185.439 → 185</li></ul>
+<p>Recompute it yourself: <code>make claim-mcp-tokens-and-time</code></p></details>
+<p class="links"><a href="runs/agent-gate-compare--ci-41184106078.html">the run</a> · <a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078">CI log</a> · <a href="raw/agent-gate-compare/ci-41184106078/compare-results.json">raw data</a> <code class="sha">sha256 8207e5a376dbab2b…</code></p>
+</article>
+<article class="claim" id="one-statement-median">
+<p class="text">Writing one statement and letting the database decide took a median of 6 s per task.</p>
+<p class="verdict ok">Supported by the raw data</p>
+<details><summary>How it is computed</summary><ul class="checks"><li><code>native.median_seconds</code> (round) = 5.82 → 6</li></ul>
+<p>Recompute it yourself: <code>make claim-one-statement-median</code></p></details>
+<p class="links"><a href="runs/agent-gate-compare--ci-41184106078.html">the run</a> · <a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078">CI log</a> · <a href="raw/agent-gate-compare/ci-41184106078/compare-results.json">raw data</a> <code class="sha">sha256 8207e5a376dbab2b…</code></p>
+</article>
+<article class="claim" id="image-preflight">
+<p class="text">The ygg-pg 0.3.5 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.</p>
+<p class="verdict ok">Supported by the raw data</p>
+<details><summary>How it is computed</summary><ul class="checks"><li><code>checks.passed</code> = 11 → 11</li><li><code>checks.failed</code> = 0 → 0</li><li><code>checks.errors</code> = 0 → 0</li><li><code>passed</code> = yes → yes</li></ul>
+<p>Recompute it yourself: <code>make claim-image-preflight</code></p></details>
+<p class="links"><a href="runs/image-preflight--ygg-pg-0.3.5-2026-11-01.html">the run</a> · <a href="raw/image-preflight/ygg-pg-0.3.5-2026-11-01/preflight-stdout.json">raw data</a> <code class="sha">sha256 8c3502d592242149…</code></p>
+</article>
+</section>
+<section><h2>Benchmarks</h2>
+<article class="bench" id="agent-gate-compare">
+<h3>The same gate, with and without MCP <span class="status running">running</span></h3>
+<p>One model (base Qwen3-8B, temperature 0), 13 tasks (6 everyday, 7 traps) and a superuser oracle that compares every table before and after each task. Only the connection changes: native (one SQL statement through pg_agent_gate), native-loop (the same, agentic), gated-mcp (the same gate over MCP) and stock-mcp (a popular Postgres MCP server with the same privileges and no gate). Reported per arm: good tasks done, trap breaches, prompt tokens, model calls, median seconds per task, errors.</p>
+<p>Rerun: <code>gh workflow run compare.yml -R &lt;your-fork&gt;/agent-gate-demo -f config=cited</code></p>
+<ul class="caveats"><li>13 tasks is a demonstration, not a statistical benchmark; repeat=3 shows run-to-run variation.</li><li>The model server runs with a 4096-token context window. The MCP arms carry tool definitions and tool results inside it; in the cited run one gated-mcp error was a context overflow. A larger window would likely change the MCP arms&#x27; numbers.</li><li>Times come only from clean GitHub runners; times from a shared machine are never cited.</li><li>The cited run measured pg_agent_gate 0.4.0 on PostgreSQL 18; the public image ships 0.4.1 on PostgreSQL 19rc1. config=current measures 0.4.1.</li></ul>
+<h4>Runs</h4><ul><li><a href="runs/agent-gate-compare--ci-41184106078.html">ci-41184106078</a> <span class="status cited">cited</span> 2026-10-31</li></ul>
+</article>
+<article class="bench" id="image-preflight">
+<h3>Red Hat container certification checks (preflight) on the public image <span class="status running">running</span></h3>
+<p>Runs Red Hat&#x27;s openshift-preflight `check container` against the published ygg-pg image, pulled by digest with no registry credential. Reported: checks passed, failed and errored. Passing preflight is a prerequisite for container certification; it is not the certification.</p>
+<p>Rerun: <code>preflight check container ghcr.io/latamflows/ygg-pg@sha256:9962ad3fac92af86ff813822aa33c8c9d3f37d49a1eaf4eaa34d43cb91e5f5c3</code></p>
+<ul class="caveats"><li>A pass says the image meets the automated checks; it says nothing about the extensions&#x27; behaviour.</li></ul>
+<h4>Runs</h4><ul><li><a href="runs/image-preflight--ygg-pg-0.3.5-2026-11-01.html">ygg-pg-0.3.5-2026-11-01</a> <span class="status cited">cited</span> 2026-11-01</li></ul>
+</article>
+<article class="bench" id="phasevec-recall">
+<h3>pg_phasevec vs pgvector: recall and latency on the same data <span class="status designed">designed</span></h3>
+<p>recall@10 against the dataset&#x27;s published ground truth, and per-query latency (p50, p99) and throughput, for pg_phasevec (find, find_ivf) and pgvector (HNSW, IVFFlat) on the same vectors, the same queries, the same PostgreSQL build and the same machine, swept over each index&#x27;s search knob. See SPEC.md.</p>
+<p>Rerun: <code>make recall-phasevec DSN=postgresql://... DATASET=nytimes-256-angular</code></p>
+<ul class="caveats"><li>Designed, not run yet: no figure from this benchmark is published.</li></ul>
+<h4>Runs</h4><ul><li>No runs yet.</li></ul>
+</article>
+</section>
+</main>
+<footer>Every figure here is recomputed from the raw file it links to (sha256 shown) by
+<code>tools/validate.py</code>. Source, schema and the process to submit your own run:
+<a href="https://github.com/Manuelreyesbravo/pg-evidence">https://github.com/Manuelreyesbravo/pg-evidence</a>.</footer>
+</body>
+</html>
