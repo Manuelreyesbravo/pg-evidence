@@ -37,8 +37,8 @@
     },
     {
       "id": "image-preflight",
-      "run": "image-preflight/ygg-pg-0.3.5-2026-11-01",
-      "text": "The ygg-pg 0.3.5 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.",
+      "run": "image-preflight/ygg-pg-0.3.6-2026-11-14",
+      "text": "The ygg-pg 0.3.6 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.",
       "source": "Built on Red Hat UBI; passes all 11 Red Hat container certification checks (preflight) — reproduce it with one command. LatamFlows is a Red Hat partner; container certification is the next step.",
       "checks": [
         {"figure": "checks.passed", "equals": 11},

@@ -88,6 +88,13 @@ def from_compare(src, by, rid):
     return result, files
 
 
+def image_name(ref):
+    """The repository of an image reference, without its tag or digest."""
+    name = ref.split("@", 1)[0]
+    last = name.rsplit("/", 1)[-1]
+    return name[: len(name) - len(last)] + last.split(":", 1)[0]
+
+
 def from_preflight(src, by, rid, digest, commit):
     out = load_json(os.path.join(src, "stdout.json"))
     image = out["image"]
@@ -105,7 +112,7 @@ def from_preflight(src, by, rid, digest, commit):
             "harness_commit": commit,
             "workflow_commit": None,
             "run_url": None,
-            "command": f"preflight check container {image.split(':')[0]}@{digest}",
+            "command": f"preflight check container {image_name(image)}@{digest}",
             "repeat": 1,
             "seed": {"value": None, "note": "No randomness."},
             "versions": {"preflight": out["test_library"]["version"], "image": image,

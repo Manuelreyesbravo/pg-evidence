@@ -40,11 +40,11 @@ If a rerun disagrees, submit it: a number claims, the machine decides.</p>
 <p class="links"><a href="runs/agent-gate-compare--ci-41184106078.html">the run</a> · <a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/41184106078">CI log</a> · <a href="raw/agent-gate-compare/ci-41184106078/compare-results.json">raw data</a> <code class="sha">sha256 8207e5a376dbab2b…</code></p>
 </article>
 <article class="claim" id="image-preflight">
-<p class="text">The ygg-pg 0.3.5 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.</p>
+<p class="text">The ygg-pg 0.3.6 image passes all 11 Red Hat container certification checks (preflight 1.22.0): 0 failed, 0 errors.</p>
 <p class="verdict ok">Supported by the raw data</p>
 <details><summary>How it is computed</summary><ul class="checks"><li><code>checks.passed</code> = 11 → 11</li><li><code>checks.failed</code> = 0 → 0</li><li><code>checks.errors</code> = 0 → 0</li><li><code>passed</code> = yes → yes</li></ul>
 <p>Recompute it yourself: <code>make claim-image-preflight</code></p></details>
-<p class="links"><a href="runs/image-preflight--ygg-pg-0.3.5-2026-11-01.html">the run</a> · <a href="raw/image-preflight/ygg-pg-0.3.5-2026-11-01/preflight-stdout.json">raw data</a> <code class="sha">sha256 8c3502d592242149…</code></p>
+<p class="links"><a href="runs/image-preflight--ygg-pg-0.3.6-2026-11-14.html">the run</a> · <a href="raw/image-preflight/ygg-pg-0.3.6-2026-11-14/preflight-stdout.json">raw data</a> <code class="sha">sha256 25f7f5297cff6a0e…</code></p>
 </article>
 </section>
 <section><h2>Benchmarks</h2>
@@ -60,7 +60,7 @@ If a rerun disagrees, submit it: a number claims, the machine decides.</p>
 <p>Runs Red Hat&#x27;s openshift-preflight `check container` against the published ygg-pg image, pulled by digest with no registry credential. Reported: checks passed, failed and errored. Passing preflight is a prerequisite for container certification; it is not the certification.</p>
 <p>Rerun: <code>preflight check container ghcr.io/latamflows/ygg-pg@sha256:ec1aabe4be95f2f84d9c06aa612edc6346079dc7ebfe93280332cd7905c0a9f1</code></p>
 <ul class="caveats"><li>A pass says the image meets the automated checks; it says nothing about the extensions&#x27; behaviour.</li></ul>
-<h4>Runs</h4><ul><li><a href="runs/image-preflight--ygg-pg-0.3.5-2026-11-01.html">ygg-pg-0.3.5-2026-11-01</a> <span class="status cited">cited</span> 2026-11-01</li></ul>
+<h4>Runs</h4><ul><li><a href="runs/image-preflight--ygg-pg-0.3.5-2026-11-01.html">ygg-pg-0.3.5-2026-11-01</a> <span class="status cited">cited</span> 2026-11-01</li><li><a href="runs/image-preflight--ygg-pg-0.3.6-2026-11-14.html">ygg-pg-0.3.6-2026-11-14</a> <span class="status cited">cited</span> 2026-11-14</li></ul>
 </article>
 <article class="bench" id="phasevec-recall">
 <h3>pg_phasevec vs pgvector: recall and latency on the same data <span class="status designed">designed</span></h3>

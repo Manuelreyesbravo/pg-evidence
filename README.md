@@ -69,8 +69,9 @@ Claims that cite it: `trap-breakouts`, `mcp-tokens-and-time`, `one-statement-med
 ### image-preflight: Red Hat's preflight on the public image — cited
 
 **Measures.** `preflight check container` (openshift-preflight 1.22.0, `1195775`) on
-`ghcr.io/latamflows/ygg-pg:0.3.5`, by digest `sha256:9962ad3f…`, pulled with no registry
-credential. Checks passed, failed, errored. Deterministic; no seed. Passing preflight is a
+`ghcr.io/latamflows/ygg-pg:0.3.6`, by digest `sha256:ec1aabe4…`, pulled with no registry
+credential (cited run: 2026-11-14; the earlier run on 0.3.5 stays next to
+it). Checks passed, failed, errored. Deterministic; no seed. Passing preflight is a
 prerequisite for container certification, not the certification.
 
 **Rerun.** `make rerun-image-preflight` (needs the `preflight` binary).

@@ -5,7 +5,7 @@
   "status": "cited",
   "date": "2026-11-01",
   "submitted_by": "Manuel Reyes Bravo",
-  "notes": "Run on the published image, pulled by digest with no registry credential (anonymous). Passing preflight is a prerequisite for Red Hat container certification, not the certification itself.",
+  "notes": "Run on the published image, pulled by digest with no registry credential (anonymous). Passing preflight is a prerequisite for Red Hat container certification, not the certification itself. Cited for image 0.3.5 until 2026-11-14; the claim now cites ygg-pg-0.3.6-2026-11-14.",
   "run": {
     "config": "check container, published image by digest, anonymous pull",
     "harness_repo": "https://github.com/redhat-openshift-ecosystem/openshift-preflight",
