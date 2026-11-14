@@ -2,7 +2,7 @@
   "title": "Red Hat container certification checks (preflight) on the public image",
   "measures": "Runs Red Hat's openshift-preflight `check container` against the published ygg-pg image, pulled by digest with no registry credential. Reported: checks passed, failed and errored. Passing preflight is a prerequisite for container certification; it is not the certification.",
   "harness": "https://github.com/redhat-openshift-ecosystem/openshift-preflight",
-  "rerun": "preflight check container ghcr.io/latamflows/ygg-pg@sha256:9962ad3fac92af86ff813822aa33c8c9d3f37d49a1eaf4eaa34d43cb91e5f5c3",
+  "rerun": "preflight check container ghcr.io/latamflows/ygg-pg@sha256:ec1aabe4be95f2f84d9c06aa612edc6346079dc7ebfe93280332cd7905c0a9f1",
   "caveats": [
     "A pass says the image meets the automated checks; it says nothing about the extensions' behaviour."
   ],

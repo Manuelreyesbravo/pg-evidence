@@ -5,8 +5,6 @@ extensions, each tied to the run that produced it: the versions, the hardware, t
 the seed, the raw data with its sha256, and the one command that reruns it. A number
 claims; the machine decides.
 
-(`pg-evidence` is a working title.)
-
 ```sh
 make validate     # recompute every figure from its raw data and check every claim
 make claims       # the same, one published claim at a time, step by step
@@ -63,7 +61,8 @@ CPU, cores and memory in `run-metadata.json`.
 **Read it with this in mind.** 13 tasks is a demonstration, not a statistical benchmark.
 The 4096-token context is small for the MCP arms, which carry tool definitions and tool
 results in it (one gated-mcp error in the cited run was a context overflow). The cited run
-measured gate 0.4.0 on PostgreSQL 18; the public image ships 0.4.1 on PostgreSQL 19rc1.
+measured gate 0.4.0 on PostgreSQL 18; the public image ygg-pg 0.3.6 ships 0.4.3 on PostgreSQL
+19rc2, and `config=current` measures 0.4.3.
 
 Claims that cite it: `trap-breakouts`, `mcp-tokens-and-time`, `one-statement-median`.
 

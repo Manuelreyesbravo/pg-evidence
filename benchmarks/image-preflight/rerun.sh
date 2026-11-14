@@ -8,7 +8,7 @@
 #
 # Needs preflight 1.22.0 (https://github.com/redhat-openshift-ecosystem/openshift-preflight/releases).
 set -euo pipefail
-IMAGE=${IMAGE:-ghcr.io/latamflows/ygg-pg@sha256:9962ad3fac92af86ff813822aa33c8c9d3f37d49a1eaf4eaa34d43cb91e5f5c3}
+IMAGE=${IMAGE:-ghcr.io/latamflows/ygg-pg@sha256:ec1aabe4be95f2f84d9c06aa612edc6346079dc7ebfe93280332cd7905c0a9f1}
 PREFLIGHT_COMMIT=${PREFLIGHT_COMMIT:-1195775769d05581060691fdcbd584b8a36e8ddd}
 BY=${BY:-$(git config user.name || echo unknown)}
 DIR=$(mktemp -d)
