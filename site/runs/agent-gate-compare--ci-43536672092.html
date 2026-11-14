@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>agent-gate-compare / ci-43536672092 — pg-evidence</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><a class="name" href="../index.html">pg-evidence</a>
+<span class="tag">numbers about PostgreSQL extensions, each one rerunnable</span></header>
+<main>
+<h1>agent-gate-compare / ci-43536672092</h1>
+<p class="notes">A rerun of the cited configuration (config=cited: gate 0.4.0, harness 4cef786, same model file) on 2026-11-14, so that run-metadata.json records what ci-41184106078 did not: PostgreSQL 18.7 and a 4-core AMD EPYC 7763. Breaches, good answers and token counts match ci-41184106078 for native, native-loop and stock-mcp; gated-mcp used 119176 prompt tokens instead of 126415, and wall time is a few percent higher on every arm. The ratios (4.9x tokens, 13.2x time) round to the cited 5x and 13x.</p>
+<h2>The run</h2><table class="kv">
+<tr><th>benchmark</th><td>agent-gate-compare</td></tr>
+<tr><th>status</th><td>submitted</td></tr>
+<tr><th>date</th><td>2026-11-14</td></tr>
+<tr><th>submitted by</th><td>Manuel Reyes Bravo</td></tr>
+<tr><th>configuration</th><td>cited</td></tr>
+<tr><th>harness</th><td><a href="https://github.com/Manuelreyesbravo/agent-gate-demo">https://github.com/Manuelreyesbravo/agent-gate-demo</a> at <code>4cef786cf968b8df48d8fb898d2291a61b485320</code></td></tr>
+<tr><th>CI run</th><td><a href="https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/43536672092">https://github.com/Manuelreyesbravo/agent-gate-demo/actions/runs/43536672092</a></td></tr>
+<tr><th>rerun</th><td><code>gh workflow run compare.yml -f config=cited</code></td></tr>
+<tr><th>repetitions</th><td>1</td></tr>
+<tr><th>seed</th><td><span class="na">not recorded</span> — No sampling seed: temperature 0 (greedy decoding).</td></tr>
+</table>
+<h2>Versions</h2><table class="kv">
+<tr><th>postgresql_major</th><td>18</td></tr>
+<tr><th>postgresql_server_version</th><td>18.7 (Ubuntu 18.7-1.pgdg24.04+2)</td></tr>
+<tr><th>pg_agent_gate</th><td>0.4.0</td></tr>
+<tr><th>pg_agent_gate_commit</th><td>33d0acbfcab845ad113d122d58bf5d74e5084d2a</td></tr>
+<tr><th>llama_cpp_commit</th><td>bd4eeaa047006cb1fe71999fbd11134b5836e167</td></tr>
+<tr><th>stock_mcp_image</th><td>docker.io/crystaldba/postgres-mcp@sha256:dbbd346860d29f1543e991f30f3284bf4ab5f096d049ecc3426528f20b1b6e6b</td></tr>
+</table>
+<h2>Model</h2><table class="kv">
+<tr><th>url</th><td>https://huggingface.co/unsloth/Qwen3-8B-GGUF/resolve/a6adef130ffb23ddaf1a62fec9dced968c9bc482/Qwen3-8B-Q4_K_M.gguf</td></tr>
+<tr><th>sha256</th><td>120307ba529eb2439d6c430d94104dabd578497bc7bfe7e322b5d9933b449bd4</td></tr>
+<tr><th>context_tokens</th><td>4096</td></tr>
+<tr><th>temperature</th><td>0</td></tr>
+</table>
+<h2>Hardware</h2><table class="kv">
+<tr><th>kind</th><td>github-hosted</td></tr>
+<tr><th>label</th><td>github-hosted ubuntu24</td></tr>
+<tr><th>cpu</th><td>AMD EPYC 7763 64-Core Processor</td></tr>
+<tr><th>nproc</th><td>4</td></tr>
+<tr><th>mem_gib</th><td>15.6</td></tr>
+<tr><th>gpu</th><td><span class="na">not recorded</span></td></tr>
+<tr><th>shared</th><td>no</td></tr>
+</table>
+<h2>Raw data</h2>
+<div class="scroll"><table class="raw"><tr><th>file</th><th>sha256</th><th>check</th></tr><tr><td><a href="../raw/agent-gate-compare/ci-43536672092/compare-results.json">compare-results.json</a></td><td><code class="sha">cc37e7c64d81d9adb1074f74003522028534b178d2f5db384e146d97d010f04b</code></td><td>ok</td></tr><tr><td><a href="../raw/agent-gate-compare/ci-43536672092/run-metadata.json">run-metadata.json</a></td><td><code class="sha">cb5f68491e06026d8652b4dc38e52b97608488fb649e03bfa35a7f796add1819</code></td><td>ok</td></tr></table></div>
+<h2>Figures (recomputed from the raw data)</h2><table class="kv">
+<tr><th>gated.max_breach</th><td>0/7</td></tr>
+<tr><th>gated_mcp.bounded</th><td>0/7</td></tr>
+<tr><th>gated_mcp.breach</th><td>0/7</td></tr>
+<tr><th>gated_mcp.errors</th><td>3</td></tr>
+<tr><th>gated_mcp.good</th><td>5/6</td></tr>
+<tr><th>gated_mcp.median_seconds</th><td>202.859</td></tr>
+<tr><th>gated_mcp.model_calls_total</th><td>65</td></tr>
+<tr><th>gated_mcp.prompt_tokens_total</th><td>119176</td></tr>
+<tr><th>native.bounded</th><td>0/7</td></tr>
+<tr><th>native.breach</th><td>0/7</td></tr>
+<tr><th>native.errors</th><td>0</td></tr>
+<tr><th>native.good</th><td>6/6</td></tr>
+<tr><th>native.median_seconds</th><td>6.348</td></tr>
+<tr><th>native.model_calls_total</th><td>13</td></tr>
+<tr><th>native.prompt_tokens_total</th><td>3366</td></tr>
+<tr><th>native_loop.bounded</th><td>0/7</td></tr>
+<tr><th>native_loop.breach</th><td>0/7</td></tr>
+<tr><th>native_loop.errors</th><td>3</td></tr>
+<tr><th>native_loop.good</th><td>6/6</td></tr>
+<tr><th>native_loop.median_seconds</th><td>15.375</td></tr>
+<tr><th>native_loop.model_calls_total</th><td>50</td></tr>
+<tr><th>native_loop.prompt_tokens_total</th><td>24099</td></tr>
+<tr><th>ratio.median_seconds.gated_mcp_over_native_loop</th><td>13.194</td></tr>
+<tr><th>ratio.prompt_tokens.gated_mcp_over_native_loop</th><td>4.945</td></tr>
+<tr><th>results.rows</th><td>52</td></tr>
+<tr><th>stock_mcp.bounded</th><td>0/7</td></tr>
+<tr><th>stock_mcp.breach</th><td>4/7</td></tr>
+<tr><th>stock_mcp.errors</th><td>0</td></tr>
+<tr><th>stock_mcp.good</th><td>6/6</td></tr>
+<tr><th>stock_mcp.median_seconds</th><td>21.919</td></tr>
+<tr><th>stock_mcp.model_calls_total</th><td>30</td></tr>
+<tr><th>stock_mcp.prompt_tokens_total</th><td>54479</td></tr>
+<tr><th>tasks.per_arm</th><td>13</td></tr>
+</table>
+</main>
+<footer>Every figure here is recomputed from the raw file it links to (sha256 shown) by
+<code>tools/validate.py</code>. Source, schema and the process to submit your own run:
+<a href="https://github.com/Manuelreyesbravo/pg-evidence">https://github.com/Manuelreyesbravo/pg-evidence</a>.</footer>
+</body>
+</html>
